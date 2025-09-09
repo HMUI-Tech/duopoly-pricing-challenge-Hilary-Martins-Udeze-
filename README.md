@@ -117,22 +117,19 @@ It is **lean, adaptive, and trustworthy** — fit for both technical evaluation 
 For less technical readers, here are the main formulas:
 
 - **EWMA (Exponentially Weighted Moving Average)**  
-  \[
-  \mu_t = \alpha x_t + (1-\alpha)\mu_{t-1}
-  \]  
+  `μ_t = α x_t + (1 - α) μ_{t-1}`
+  
   *Gives more weight to recent sales data.*
 
 - **Decayed OLS Regression**  
   Regression with weights that decay over time: recent data counts more than old data.  
   Coefficient estimate:
-  \[
-  \hat{\beta} = \frac{S_{xy}}{S_{xx}}
-  \]
+  
+  `β̂ = S_xy / S_xx`
 
 - **UCB (Upper Confidence Bound)**  
-  \[
-  p = \hat{r} + C \sqrt{\frac{\ln t}{n}}
-  \]  
+   `p = r̂ + C * sqrt(ln(t) / n)`
+  
   *Chooses between exploring less-tested prices and exploiting the best-known price.*
 
 - **ε-greedy**  
