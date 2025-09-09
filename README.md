@@ -74,10 +74,9 @@ Safety rules:
 ---
 
 ## 5. Development Journey – Resilience
-During testing, the agent misbehaved when the competitor had **no capacity**.  
-Instead of ignoring it, I added a **specific override check** to handle the scenario.  
+I initially noticed that the agent, during its first few periods, would sometimes pick a price based on random exploration (epsilon) even though no historical sales data existed. This meant it could make a risky, random choice on day one. To prevent this, I implemented a explicit COLD_START period where the agent is forced to use a safe, default price before any exploration or learning begins. 
 
-- **Business value:** This resilience prevents embarrassing failures in production.  
+- **Business value:** This prevents the agent from gambling blindly at the start , building trust with managers by demonstrating a cautious approach until it has sufficient data to make an informed decision. 
 
 ---
 
@@ -98,11 +97,6 @@ This agent maximizes revenue **safely under constraints**:
 
 ## Appendix – Technical Footnotes
 For less technical readers, here are the main formulas:
-
-- **EWMA (Exponentially Weighted Moving Average)**  
-  `μ_t = α x_t + (1 - α) μ_{t-1}`
-  
-  *Gives more weight to recent sales data.*
 
 - **Decayed OLS Regression**  
   Regression with weights that decay over time: recent data counts more than old data.  
