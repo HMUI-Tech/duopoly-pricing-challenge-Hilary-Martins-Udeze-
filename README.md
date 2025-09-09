@@ -2,7 +2,7 @@
 
 ## Introduction
 When I designed this pricing agent, I didn’t want it to just “work” under competition rules.  
-I wanted something that a **business manager could trust**, that a **data scientist could defend**, and that an **engineer could run** without breaking constraints.  
+I wanted something that a **business manager could trust** and that an **engineer could run** without breaking constraints.  
 
 Every choice was about balance:
 - **Profit vs. Exploration**
@@ -11,7 +11,7 @@ Every choice was about balance:
 
 ---
 
-## 1. State Design – Lean but Capable
+## 1. State Design – lean and simple
 At first, I considered keeping *all history* so the agent could see every past event.  
 But I realized this would blow up memory and make the agent slow.  
 
@@ -77,39 +77,22 @@ Safety rules:
 During testing, the agent misbehaved when the competitor had **no capacity**.  
 Instead of ignoring it, I added a **specific override check** to handle the scenario.  
 
-- **Business value:** This kind of resilience prevents embarrassing failures in production.  
-- **Interview value:** Shows I can anticipate and fix edge cases.
+- **Business value:** This resilience prevents embarrassing failures in production.  
 
 ---
 
-## 6. Transparency – The Decision Card
-I added a **Decision Card** inside the state object.  
-
-Each round, it stores:
-- OLS price, UCB price, chosen price  
-- Exploration rate ε, UCB bonus  
-- Applied constraints (cost floor, competitor cap)  
-- A short reason string (e.g., `"OLS within Δ=0.5 of UCB; smoother path chosen"`)
-
-- **Business value:** A manager or analyst can audit pricing decisions without needing to read the code.
-
----
-
-## 7. What I Rejected
+## 6. What I Rejected
 - **Unbounded history** → risk of crashes.  
 - **Deep RL / heavy optimizers** → too slow, disallowed, unpredictable.  
 - **Fixed rules only** → too rigid, no adaptation.  
 
 ---
 
-## 8. Business Takeaway
+## 7. Business Takeaway
 This agent maximizes revenue **safely under constraints**:
 - Learns from real-time sales & competitor prices.  
 - Balances exploration with profit focus.  
-- Avoids reckless moves (cost floor, safe bounds).  
-- Explains decisions clearly to both engineers and managers.  
-
-It is **lean, adaptive, and trustworthy** — fit for both technical evaluation and real-world business use.  
+- Avoids reckless moves (cost floor, safe bounds).    
 
 ---
 
