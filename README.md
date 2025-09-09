@@ -109,7 +109,4 @@ For less technical readers, here are the main formulas:
   
   *Chooses between exploring less-tested prices and exploiting the best-known price.*
 
-- **ε-greedy**  
-  With small probability ε, try a random price to avoid getting stuck.
-
 ---
