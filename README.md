@@ -73,7 +73,7 @@ Safety rules:
 
 ---
 
-## 5. Development Journey – Resilience
+## 5. Development Journey
 I initially noticed that the agent, during its first few periods, would sometimes pick a price based on random exploration (epsilon) even though no historical sales data existed. This meant it could make a risky, random choice on day one. To prevent this, I implemented a explicit COLD_START period where the agent is forced to use a safe, default price before any exploration or learning begins. 
 
 - **Business value:** This prevents the agent from gambling blindly at the start , building trust with managers by demonstrating a cautious approach until it has sufficient data to make an informed decision. 
